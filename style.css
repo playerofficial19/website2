@@ -1,0 +1,129 @@
+:root {
+  color-scheme: dark;
+  font-family: Arial, sans-serif;
+  background: #101810;
+  color: #fff;
+}
+
+* { box-sizing: border-box; }
+
+body { margin: 0; }
+
+.site {
+  min-height: 100vh;
+  background: #101810;
+  transition: background-color .5s, color .5s, box-shadow .5s;
+}
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: .5rem;
+  padding: 1rem;
+  background: #1c2b1c;
+}
+
+nav a {
+  display: inline-block;
+  padding: .65rem .85rem;
+  border-radius: .5rem;
+  color: #a6ff39;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+nav a:hover,
+nav a:focus-visible {
+  background: #345c24;
+  color: #fff;
+}
+
+main {
+  width: min(100% - 2rem, 1100px);
+  margin-inline: auto;
+  padding-block: 2rem 4rem;
+}
+
+h1 { color: #a6ff39; font-size: clamp(2rem, 6vw, 3.25rem); }
+h2 { color: #a6ff39; }
+p { line-height: 1.6; }
+img { display: block; max-width: 100%; height: auto; }
+
+.galeri {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.kart {
+  min-width: 0;
+  padding: 1rem;
+  border: 1px solid #456833;
+  border-radius: 1rem;
+  background: #192719;
+  text-align: center;
+}
+
+.kart a { display: block; }
+
+.kart img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border: 4px solid #a6ff39;
+  border-radius: .75rem;
+}
+
+.kart h3 { margin-bottom: 0; }
+
+.detail-image {
+  width: min(100%, 360px);
+  border: 5px solid #a6ff39;
+  border-radius: 1rem;
+}
+
+.back-link { color: #a6ff39; }
+.back-link:hover,
+.back-link:focus-visible { color: #fff; }
+
+#donusum {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+.omnitrix-button {
+  display: inline-block;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.omnitrix-button img { width: min(150px, 45vw); }
+.omnitrix-button:hover img { filter: drop-shadow(0 0 15px #a6ff39); }
+#donusum:focus-visible ~ .site .omnitrix-button { outline: 3px solid #fff; outline-offset: 5px; }
+
+#donusum:checked ~ .site {
+  background: #193b12;
+  color: #a6ff39;
+  box-shadow: inset 0 0 100px #65c900;
+}
+
+#donusum:checked ~ .site nav { background: #345c24; }
+
+/* Tablet: two gallery cards per row. */
+@media (min-width: 600px) {
+  main { width: min(100% - 3rem, 1100px); }
+  .galeri { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+/* Desktop: three gallery cards per row. */
+@media (min-width: 900px) {
+  .galeri { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site { transition: none; }
+}
